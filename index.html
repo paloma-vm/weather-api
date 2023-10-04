@@ -26,7 +26,7 @@
     <script src="weather.js" type="module"></script>
     <script type="module">
       // import getWeather from './weather.js'
-      import { getWeather } from './weather.js'
+      import { getWeatherByZip } from './weather.js'
 
       // ------------------------------------------------------
       // Developer Code
@@ -43,18 +43,14 @@
         const zip = zipInput.value
         const apiKey = 'a9f8353d3c437d49a18e4349ffb861c2'
 
-        getWeather(zip, apiKey)
+        getWeatherByZip(zip, apiKey)
           .then((data) => {
-            tempEl.innerHTML = data.main.temp
-            descEl.innerHTML = data.weather[0].description
+            console.log(data)
+            tempEl.innerHTML = data.temp
+            descEl.innerHTML = data.description
           }).catch(err => console.log(err.message))
       })
 
-      // Functions 
-      // function handleWeather(json) {
-      //   tempEl.innerHTML = json.main.temp
-      //   descEl.innerHTML = json.weather[0].description
-      // } 
       function handleError(err) {
         console.log('There is an error.', err)
       }   
